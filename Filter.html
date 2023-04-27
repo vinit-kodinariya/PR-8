@@ -1,0 +1,290 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<title>Shopping Shoes</title>
+
+<style>
+    body {
+        background-color: rgb(220, 218, 218);
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: blue;
+    }
+
+    .card-img {
+        overflow: hidden;
+    }
+
+    .card img {
+        transition: all 0.5s;
+    }
+
+    .card img:hover {
+        transform: scale(1.1);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row pt-5 pb-5 justify-content-center">
+            <div class="col-md-1">
+                <button onclick="viewAllRecord()" class="btn btn-primary">All</button>
+            </div>
+            <div class="col-md-1">
+                <button onclick="nikeData()" class="btn btn-primary">Nike</button>
+            </div>
+            <div class="col-md-1">
+                <button onclick="adidasData()" class="btn btn-primary">Adidas</button>
+            </div>
+            <div class="col-md-1">
+                <button onclick="pumaData()" class="btn btn-primary">Puma</button>
+            </div>
+            <div class="col-md-1">
+                <button onclick="campusData()" class="btn btn-primary">Campus</button>
+            </div>
+            <div class="col-md-1">
+                <button onclick="reebokData()" class="btn btn-primary">Reebok</button>
+            </div>
+        </div>
+
+        <div class="row" id="allrecord">
+        </div>
+    </div>
+
+</body>
+
+
+<script type="text/javascript">
+
+    let data = [
+        {
+            name: "Nike Revolution 6 Nature Shoes For Men",
+            price: "₹3999.05",
+            image: "https://i.ebayimg.com/images/g/1OAAAOSw40lj5S4~/s-l1600.jpg",
+            category: "nike"
+        },
+        {
+            name: "Adidas Black Duramo 10 Shoes",
+            price: "₹2999.00",
+            image: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/cde9362a09ba4dd38c9ead6600ac074e_9366/Duramo_10_Shoes_Black_GW8336_01_standard.jpg",
+            category: "adidas"
+        },
+        {
+            name: "Puma Black Sports Shoes",
+            price: "₹1999.10",
+            image: "https://assets.ajio.com/medias/sys_master/root/20210108/indk/5ff88c327cdb8c1f1423eb22/-288Wx360H-460822714-black-MODEL.jpg",
+            category: "puma"
+        },
+        {
+            name: "REFRESH PRO Gray Men's",
+            price: "₹999.05",
+            image: "https://cdn.shopify.com/s/files/1/0607/6678/1671/products/REFRESHPRO-CG-541-GRY-RED_2_7b04d719-8c9c-40ae-be21-04162207ca74.jpg?v=1670326282",
+            category: "campus"
+        },
+        {
+            name: "Reebok Austin 2.0 Shoes",
+            price: "₹2999.00",
+            image: "https://assets.ajio.com/medias/sys_master/root/20230113/qFQf/63c1728af997dd708e071212/-473Wx593H-469215767-black-MODEL.jpg",
+            category: "reebok"
+        },
+        {
+            name: "Nike Red, Precision VI Basketball Shoes ",
+            price: "₹2599.00",
+            image: "https://assets.ajio.com/medias/sys_master/root/20230302/9frc/6400b88ff997dde6f4da83fe/-473Wx593H-469434682-blackgrey-MODEL.jpg",
+            category: "nike"
+        },
+        {
+            name: "Adidas white 8 Shoes",
+            price: "₹1599.00",
+            image: "https://assets.adidas.com/images/w_600,f_auto,q_auto/bd43ce71f589498ab6b1aad6009a0e6e_9366/SUPERSTAR_SHOES_White_EG4958_07_standard.jpg",
+            category: "adidas"
+        },
+        {
+            name: "Buy Beige Sports Shoes",
+            price: "₹2099.00",
+            image: "https://assets.ajio.com/medias/sys_master/root/20210203/CmBw/601acc9faeb26969815c6a6d/-473Wx593H-460835488-beige-MODEL2.jpg",
+            category: "puma"
+        },
+        {
+            name: "LIFT WHITE Men's Running Shoes",
+            price: "₹1299.50",
+            image: "https://cdn.shopify.com/s/files/1/0607/6678/1671/products/LIFT_6G-855A_WHT-R.SLATE_2_9a93b9d1-e97a-4c62-b4c7-4ccfd242ef51.jpg?v=1670325807",
+            category: "campus"
+        },
+        {
+            name: "Reebok Club C-85 White Shoes",
+            price: "₹1799.00",
+            image: "https://cdn.shopify.com/s/files/1/0617/9894/0836/products/14-386334.jpg?v=1666480858&width=1445",
+            category: "reebok"
+        },
+        {
+            name: "Shop NikeAie Max Shoes",
+            price: "₹1699.00",
+            image: "https://www.footlocker.qa/assets/styles/FootLocker/image-thumb__128286__product_listing/316702596004_01.jpg",
+            category: "nike"
+        },
+        {
+            name: "Adidas Response Super 3.0 Shoes",
+            price: "₹1850.00",
+            image: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/bf34e3cf2ea74279ad3cae890002d5e3_9366/Response_Super_3.0_Shoes_Grey_GW1376_01_standard.jpg",
+            category: "adidas"
+        },
+        {
+            name: "Sepatu Puma Sports Shoes",
+            price: "₹1499.00",
+            image: "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2020/12/3/e950063c-006b-441a-9024-84672e281223.jpg.webp",
+            category: "puma"
+        },
+        {
+            name: "ROCKEE Blue Men's Casual Shoes",
+            price: "₹999.50",
+            image: "https://cdn.shopify.com/s/files/1/0607/6678/1671/products/ROCKEE_6G-591_BLU_2.jpg?v=1670326495",
+            category: "campus"
+        },
+        {
+            name: "Reebok Club C-85 White Shoes",
+            price: "₹2199.00",
+            image: "https://assets.reebok.com/images/w_600,f_auto,q_auto/4e84782e2543467b82d2adff009b7c1c_9366/Classic_Leather_Shoes_Blue_GY3600_01_standard.jpg",
+            category: "reebok"
+        },
+    ];
+    viewAllRecord();
+    function viewAllRecord() {
+        let tbl = "";
+        data.map((val) => {
+            tbl += `
+                <div class="col-md-4 pb-4">
+                    <div class="card shadow">
+                        <div class="card-img">
+                            <img src="${val.image}"style="height:550px;" class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-body">
+                        <h5 class="card-title">${val.name}</h5>
+                        <p class="card-text">${val.price}</p>
+                        <a href="#" class="btn btn-primary shadow">Bay Now</a>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function nikeData() {
+        let category = "nike";
+        let tbl = "";
+        data.map((val) => {
+            if (val.category == category) {
+                tbl += `
+                    <div class="col-md-4 pb-4">
+                        <div class="card shadow">
+                            <div class="card-img">
+                                <img src="${val.image}"style="height:550px;" class="card-img-top" alt="...">
+                             </div>
+                            <div class="card-body">
+                            <h5 class="card-title">${val.name}</h5>
+                            <p class="card-text">${val.price}</p>
+                            <a href="#" class="btn btn-primary shadow">Bay Now</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+
+        })
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+    function adidasData() {
+        let category = "adidas";
+        let tbl = "";
+        data.map((val) => {
+            if (val.category == category) {
+                tbl += `
+                    <div class="col-md-4 pb-4">
+                        <div class="card shadow">
+                            <div class="card-img">
+                                <img src="${val.image}"style="height:550px;" class="card-img-top" alt="...">
+                                </div>
+                                <div class="card-body">
+                                <h5 class="card-title">${val.name}</h5>
+                            <p class="card-text">${val.price}</p>
+                            <a href="#" class="btn btn-primary shadow">Bay Now</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        })
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+    function pumaData() {
+        let category = "puma";
+        let tbl = "";
+        data.map((val) => {
+            if (val.category == category) {
+                tbl += `
+                    <div class="col-md-4 pb-4">
+                        <div class="card shadow">
+                            <div class="card-img">
+                                <img src="${val.image}"style="height:550px;" class="card-img-top" alt="...">
+                                </div>
+                            <div class="card-body">
+                            <h5 class="card-title">${val.name}</h5>
+                            <p class="card-text">${val.price}</p>
+                            <a href="#" class="btn btn-primary shadow">Bay Now</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        })
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+    function campusData() {
+        let category = "campus";
+        let tbl = "";
+        data.map((val) => {
+            if (val.category == category) {
+                tbl += `
+                    <div class="col-md-4 pb-4">
+                        <div class="card shadow">
+                            <div class="card-img">
+                                <img src="${val.image}"style="height:550px;" class="card-img-top" alt="...">
+                            </div>
+                            <div class="card-body">
+                            <h5 class="card-title">${val.name}</h5>
+                            <p class="card-text">${val.price}</p>
+                            <a href="#" class="btn btn-primary shadow">Bay Now</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        })
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+    function reebokData() {
+        let category = "reebok";
+        let tbl = "";
+        data.map((val) => {
+            if (val.category == category) {
+                tbl += `
+                    <div class="col-md-4 pb-4">
+                        <div class="card shadow">
+                            <div class="card-img">
+                                <img src="${val.image}"style="height:550px;" class="card-img-top" alt="...">
+                            </div>
+                            <div class="card-body">
+                            <h5 class="card-title">${val.name}</h5>
+                            <p class="card-text">${val.price}</p>
+                            <a href="#" class="btn btn-primary shadow">Bay Now</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        })
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+</script>
